@@ -118,6 +118,21 @@
         <item>@string/clock_date_format_custom</item>
     </string-array>
 
+    <!-- Smart pulldown -->
+    <string-array name="smart_pulldown_entries" translatable="false">
+        <item>@string/smart_pulldown_off</item>
+        <item>@string/smart_pulldown_dismissable</item>
+        <item>@string/smart_pulldown_ongoing</item>
+        <item>@string/smart_pulldown_none</item>
+    </string-array>
+
+    <string-array name="smart_pulldown_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <!-- SystemUI Theme -->
     <string-array name="systemui_theme_style_entries" translatable="false">
         <item>@string/systemui_theme_style_auto</item>
