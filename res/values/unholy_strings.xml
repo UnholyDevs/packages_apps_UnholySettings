@@ -30,6 +30,10 @@
     <string name="media_art_title">Full-screen media cover art</string>
     <string name="media_art_summary">Set full-screen media cover art on the lockscreen</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
+    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+
     <!-- Quick pull down-->
     <string name="quick_pulldown_title">Quick pulldown</string>
     <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
