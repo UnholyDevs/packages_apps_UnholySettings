@@ -26,6 +26,15 @@
     <string name="media_art_title">Full-screen media cover art</string>
     <string name="media_art_summary">Set full-screen media cover art on the lockscreen</string>
 
+    <!-- Quick pull down-->
+    <string name="quick_pulldown_title">Quick pulldown</string>
+    <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
+    <string name="quick_pulldown_summary_always">Always show Quick Settings on status bar pulldown</string>
+    <string name="quick_pulldown_off">Off</string>
+    <string name="quick_pulldown_left">Left</string>
+    <string name="quick_pulldown_right">Right</string>
+    <string name="quick_pulldown_always">Always</string>
+
     <!-- Settings Categories -->
     <string name="hardware_settings">Hardware settings</string>
     <string name="lockscreen_settings">Lockscreen settings</string>
