@@ -43,16 +43,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
+public class AnimationSettings extends SettingsPreferenceFragment
+            implements OnPreferenceChangeListener {
+
+    private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
+
+    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+    private static final String SCROLLINGCACHE_DEFAULT = "2";
     
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
-
-    private ListPreference mListViewAnimation;
-    private ListPreference mListViewInterpolator;
     private ListPreference mScreenOffAnimation;
+    private ListPreference mScrollingCachePref;
 
     @Override
     public int getMetricsCategory() {
@@ -79,7 +84,7 @@ private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
         mListViewInterpolator.setValue(String.valueOf(listviewinterpolator));
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
-        mListViewInterpolator.setEnabled(listviewanimation > 0);        
+        mListViewInterpolator.setEnabled(listviewanimation > 0);
 
         mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
         int screenOffAnimation = Settings.Global.getInt(getContentResolver(),
@@ -87,6 +92,11 @@ private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
         mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
         mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
         mScreenOffAnimation.setOnPreferenceChangeListener(this);
+
+        mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
+        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+        mScrollingCachePref.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -110,13 +120,17 @@ private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
             int index = mListViewInterpolator.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR, value);
-            mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);           
+            mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
             return true;
         } else if (preference == mScreenOffAnimation) {
             int value = Integer.valueOf((String) newValue);
             int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
             mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
             Settings.Global.putInt(getContentResolver(), Settings.Global.SCREEN_OFF_ANIMATION, value);
+        } else if (preference == mScrollingCachePref) {
+            if (newValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String) newValue);
+            }
             return true;
         }
         return false;
