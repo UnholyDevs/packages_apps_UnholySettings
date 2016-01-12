@@ -14,6 +14,10 @@
     <!-- Unholy Settings -->
     <string name="unholy_title">Unholy settings</string>
 
+    <!-- Disable OS on lockscreen -->
+    <string name="block_on_secure_keyguard_title">Disable quick settings</string>
+    <string name="block_on_secure_keyguard_summary">Disables quick settings on secure lockscreen</string>
+
     <!-- Hide Lockscreen clock, date, & alarm -->
     <string name="hide_lockscreen_clock_title">Clock widget</string>
     <string name="hide_lockscreen_clock_summary">Change the clock widget\'s visibility</string>
