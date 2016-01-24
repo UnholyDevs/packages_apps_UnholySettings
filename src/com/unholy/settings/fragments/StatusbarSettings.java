@@ -70,12 +70,14 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+    private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
     private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
     private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
     private CustomSeekBarPreference mNetTrafficAutohideThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mNetTrafficAutohide;
+    private SystemSettingSwitchPreference mNetTrafficHidearrow;
 
     private ListPreference mSystemUIThemeStyle;
     
@@ -103,6 +105,12 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         mNetMonitor = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_STATE);
         mNetMonitor.setChecked(isNetMonitorEnabled);
         mNetMonitor.setOnPreferenceChangeListener(this);
+
+        mNetTrafficHidearrow =
+            (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
+        mNetTrafficHidearrow.setChecked((Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_HIDEARROW, 0) == 1));
+        mNetTrafficHidearrow.setOnPreferenceChangeListener(this);
 
         mNetTrafficAutohide =
             (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE);
@@ -192,9 +200,11 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
 
     private void updateNetworkTrafficState(boolean value) {
         if (!value) {
+            mNetTrafficHidearrow.setEnabled(false);
             mNetTrafficAutohide.setEnabled(false);
             mNetTrafficAutohideThreshold.setEnabled(false);
         } else {
+            mNetTrafficHidearrow.setEnabled(true);
             mNetTrafficAutohide.setEnabled(true);
             mNetTrafficAutohideThreshold.setEnabled(true);
         }
@@ -208,6 +218,11 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                     Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
                     UserHandle.USER_CURRENT);
             updateNetworkTrafficState(value);
+            return true;
+        } else if (preference == mNetTrafficHidearrow) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_HIDEARROW, value ? 1 : 0);
             return true;
         } else if (preference == mNetTrafficAutohide) {
             boolean value = (Boolean) newValue;
