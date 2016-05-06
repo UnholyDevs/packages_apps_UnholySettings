@@ -14,4 +14,10 @@
     android:title="@string/miscellaneous_settings"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <com.unholy.settings.preference.SystemSettingSwitchPreference
+         android:key="double_tap_sleep_gesture"
+         android:title="@string/double_tap_sleep_gesture_title"
+         android:summary="@string/double_tap_sleep_gesture_summary"
+         android:defaultValue="true" />
+
 </PreferenceScreen>
