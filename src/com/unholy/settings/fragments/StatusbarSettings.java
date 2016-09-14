@@ -50,6 +50,7 @@ import com.android.settings.Utils;
 
 import com.unholy.settings.preference.CustomSeekBarPreference;
 import com.unholy.settings.preference.SystemSettingSwitchPreference;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.Date;
 
@@ -68,6 +69,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
+    private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+
+    private CustomSeekBarPreference mNetTrafficAutohideThreshold;
+    private SystemSettingSwitchPreference mNetMonitor;
+    private SystemSettingSwitchPreference mNetTrafficAutohide;
 
     private ListPreference mSystemUIThemeStyle;
     
@@ -87,8 +95,28 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.statusbar_settings);
-        ContentResolver resolver = getActivity().getContentResolver();        
-        
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        // network traffic
+        boolean isNetMonitorEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
+        mNetMonitor = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_STATE);
+        mNetMonitor.setChecked(isNetMonitorEnabled);
+        mNetMonitor.setOnPreferenceChangeListener(this);
+
+        mNetTrafficAutohide =
+            (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE);
+        mNetTrafficAutohide.setChecked((Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1));
+        mNetTrafficAutohide.setOnPreferenceChangeListener(this);
+
+        mNetTrafficAutohideThreshold = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+        int netTrafficAutohideThreshold = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
+        mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold);
+        mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
+
+        // Clock settings
         mStatusBarClockShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK);
         mStatusBarSecondsShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
@@ -162,9 +190,36 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         super.onResume();
     }
 
+    private void updateNetworkTrafficState(boolean value) {
+        if (!value) {
+            mNetTrafficAutohide.setEnabled(false);
+            mNetTrafficAutohideThreshold.setEnabled(false);
+        } else {
+            mNetTrafficAutohide.setEnabled(true);
+            mNetTrafficAutohideThreshold.setEnabled(true);
+        }
+    }
+
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         AlertDialog dialog;
-        if (preference == mStatusBarClockShow) {
+        if (preference == mNetMonitor) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            updateNetworkTrafficState(value);
+            return true;
+        } else if (preference == mNetTrafficAutohide) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE, value ? 1 : 0);
+            return true;
+        } else if (preference == mNetTrafficAutohideThreshold) {
+            int threshold = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, threshold * 1);
+            return true;
+        } else if (preference == mStatusBarClockShow) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
