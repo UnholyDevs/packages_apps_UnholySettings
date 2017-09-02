@@ -14,6 +14,10 @@
     <!-- Unholy Settings -->
     <string name="unholy_title">Unholy settings</string>
 
+    <!-- Lockscreen Media art -->
+    <string name="media_art_title">Full-screen media cover art</string>
+    <string name="media_art_summary">Set full-screen media cover art on the lockscreen</string>
+
     <!-- Settings Categories -->
     <string name="hardware_settings">Hardware settings</string>
     <string name="lockscreen_settings">Lockscreen settings</string>
