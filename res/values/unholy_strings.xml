@@ -244,4 +244,8 @@
     <!-- Lockscreen charging  -->
     <string name="lockscreen_battery_info_title">Charging info</string>
     <string name="lockscreen_battery_info_summary">Display charger max current and voltage and battery temperature on lockscreen while charging</string>
+
+    <!-- Wake options -->
+    <string name="wakeup_when_plugged_unplugged_title">Wake on charge</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Wake device if charger is plugged/unplugged.</string>
 </resources>
