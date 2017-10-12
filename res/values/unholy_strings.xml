@@ -151,6 +151,10 @@
     <string name="show_carrier_keyguard">Lockscreen only</string>
     <string name="show_carrier_statusbar">Statusbar only</string>
     <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+
+    <!-- Unholy statusbar logo -->
+    <string name="status_bar_logo_title">Unholy logo</string>
+    <string name="status_bar_logo_summary">Show the Unholy logo on statusbar</string>
   
     <!-- SystemUI Theme Style -->
     <string name="systemui_theme_style_title">SystemUI style</string>
