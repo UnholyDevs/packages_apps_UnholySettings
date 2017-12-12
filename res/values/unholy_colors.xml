@@ -16,6 +16,9 @@
 
 <resources>    
 
+    <!-- Bottom navigation -->
+    <color name="BottomBarBackgroundColor">@android:color/white</color>
+
     <!-- Fruity Loops -->
     <color name="accent_picker_white_accent">@android:color/white</color>
     <color name="accent_picker_dark_accent">@android:color/black</color>
