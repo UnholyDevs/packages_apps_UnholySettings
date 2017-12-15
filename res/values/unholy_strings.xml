@@ -84,6 +84,12 @@
     <string name="clock_date_format">Date format</string>
     <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Enter string</string>
+  
+    <!-- SystemUI Theme Style -->
+    <string name="systemui_theme_style_title">SystemUI style</string>
+    <string name="systemui_theme_style_auto">Automatic using wallpaper</string>
+    <string name="systemui_theme_style_light">Light style</string>
+    <string name="systemui_theme_style_dark">Dark style</string>
 
     <!-- Volume key controls media stream -->
     <string name="volume_keys_control_media_stream_title">Volume keys control media volume</string>

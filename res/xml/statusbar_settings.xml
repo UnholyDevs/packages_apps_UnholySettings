@@ -69,6 +69,14 @@
             android:title="@string/clock_date_format"
             android:entries="@array/clock_date_format_entries_values"
             android:entryValues="@array/clock_date_format_entries_values"
-            android:dependency="clock_date_display" />    
+            android:dependency="clock_date_display" /> 
+
+        <ListPreference
+            android:key="systemui_theme_style"
+            android:title="@string/systemui_theme_style_title"
+            android:persistent="false"
+            android:entries="@array/systemui_theme_style_entries"
+            android:entryValues="@array/systemui_theme_style_values" />   
 
 </PreferenceScreen>
+
