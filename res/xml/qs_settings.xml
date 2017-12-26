@@ -33,7 +33,11 @@
             android:entryValues="@array/smart_pulldown_values"
             android:persistent="false" />
 
-        <com.unholy.settings.preference.SecureSettingSwitchPreference
+        <com.unholy.settings.preference.SystemSettingSwitchPreference
+            android:key="qs_tile_title_visibility"
+            android:title="@string/qs_tile_title_visibility_title" />
+
+        <com.unholy.settings.preference.SecureSettingSwitchPreference 
             android:key="status_bar_locked_on_secure_keyguard"
             android:title="@string/block_on_secure_keyguard_title"
             android:summary="@string/block_on_secure_keyguard_summary"
