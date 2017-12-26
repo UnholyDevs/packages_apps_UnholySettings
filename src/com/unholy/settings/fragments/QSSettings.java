@@ -16,14 +16,35 @@
 
 package com.unholy.settings.fragments;
 
-import android.os.Bundle;
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
+import android.provider.Settings;
+
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+import com.unholy.settings.preference.SystemSettingSwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-public class QuickSettings extends SettingsPreferenceFragment implements
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+
+public class QSSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String QUICK_PULLDOWN = "quick_pulldown";
@@ -31,11 +52,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mQuickPulldown; 
     ListPreference mSmartPulldown;
-
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-
-public class QSSettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

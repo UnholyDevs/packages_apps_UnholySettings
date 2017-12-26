@@ -14,6 +14,11 @@
     android:title="@string/qs_settings"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <Preference
+        android:key="qs_rows_columns"
+        android:fragment="com.unholy.settings.fragments.QsRowsColumns"
+        android:title="@string/qs_rows_columns_title"/>
+
     <ListPreference
             android:key="quick_pulldown"
             android:title="@string/quick_pulldown_title"
