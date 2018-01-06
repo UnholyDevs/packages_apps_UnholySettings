@@ -35,7 +35,8 @@
 
         <com.unholy.settings.preference.SystemSettingSwitchPreference
             android:key="qs_tile_title_visibility"
-            android:title="@string/qs_tile_title_visibility_title" />
+            android:title="@string/qs_tile_title_visibility_title" 
+            android:defaultValue="true" /> 
 
         <com.unholy.settings.preference.SecureSettingSwitchPreference 
             android:key="status_bar_locked_on_secure_keyguard"
