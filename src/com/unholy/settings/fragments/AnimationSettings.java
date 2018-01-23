@@ -45,9 +45,14 @@ import java.util.List;
 
 private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
     
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+
+    private ListPreference mListViewAnimation;
+    private ListPreference mListViewInterpolator;
+    private ListPreference mScreenOffAnimation;
 
     @Override
     public int getMetricsCategory() {
@@ -75,6 +80,13 @@ private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);        
+
+        mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
+        int screenOffAnimation = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.SCREEN_OFF_ANIMATION, 0);
+        mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
+        mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
+        mScreenOffAnimation.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -99,6 +111,12 @@ private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR, value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);           
+            return true;
+        } else if (preference == mScreenOffAnimation) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
+            mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
+            Settings.Global.putInt(getContentResolver(), Settings.Global.SCREEN_OFF_ANIMATION, value);
             return true;
         }
         return false;
