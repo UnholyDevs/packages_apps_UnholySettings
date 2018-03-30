@@ -15,7 +15,7 @@
     <string name="unholy_title">Unholy settings</string>
 
     <!-- Settings Categories -->
-    <string name="hardware_settings">Hardware</string>
+    <string name="hardware_settings">Hardware settings</string>
     <string name="lockscreen_settings">Lockscreen settings</string>
     <string name="miscellaneous_settings">Miscellaneous settings</string>
     <string name="recents_settings">Recents settings</string>
