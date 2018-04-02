@@ -12,6 +12,12 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/animation_settings"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">           
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">   
+
+    <com.unholy.settings.preference.GlobalSettingSwitchPreference
+        android:key="system_default_animation"
+        android:title="@string/system_default_animation_title"
+        android:summary="@string/system_default_animation_summary"
+        android:defaultValue="false" />    
 
 </PreferenceScreen>
