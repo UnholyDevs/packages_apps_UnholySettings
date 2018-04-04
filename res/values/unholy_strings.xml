@@ -14,7 +14,17 @@
     <!-- Unholy Settings -->
     <string name="unholy_title">Unholy settings</string>
 
-    <!-- Disable OS on lockscreen -->
+    <!-- Settings Categories -->
+    <string name="hardware_settings">Hardware settings</string>
+    <string name="lockscreen_settings">Lockscreen settings</string>
+    <string name="miscellaneous_settings">Miscellaneous settings</string>
+    <string name="recents_settings">Recents settings</string>
+    <string name="navbar_settings">Navbar settings</string>
+    <string name="powermenu_settings">Power menu settings</string>
+    <string name="qs_settings">QS tile settings</string>
+    <string name="statusbar_settings_title">Statusbar settings</string>
+
+    <!-- Disable QS on lockscreen -->
     <string name="block_on_secure_keyguard_title">Disable quick settings</string>
     <string name="block_on_secure_keyguard_summary">Disables quick settings on secure lockscreen</string>
 
@@ -47,7 +57,15 @@
     <string name="qs_panel_alpha_title">Panel background transparency</string>
 
     <!-- QS rows and columns -->
-    <string name="qs_rows_columns_title">QS rows and columns</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
     <string name="qs_rows_portrait_title">Tiles rows on portrait</string>
     <string name="qs_rows_landscape_title">Tiles rows on landscape</string>
     <string name="qs_columns_portrait_title">Tiles columns on portrait</string>
@@ -59,16 +77,6 @@
 
     <!-- QS tile titles -->
     <string name="qs_tile_title_visibility_title">Show tiles title</string>
-
-    <!-- Settings Categories -->
-    <string name="hardware_settings">Hardware settings</string>
-    <string name="lockscreen_settings">Lockscreen settings</string>
-    <string name="miscellaneous_settings">Miscellaneous settings</string>
-    <string name="recents_settings">Recents settings</string>
-    <string name="navbar_settings">Navbar settings</string>
-    <string name="powermenu_settings">Power menu settings</string>
-    <string name="qs_settings">QS tile settings</string>
-    <string name="statusbar_settings_title">Statusbar settings</string>
 
     <!-- Recents panel settings -->
     <string name="show_clear_all_recents_button_title">Clear all button</string>

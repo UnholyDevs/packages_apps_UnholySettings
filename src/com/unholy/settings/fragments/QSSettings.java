@@ -35,15 +35,12 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.unholy.settings.preference.SystemSettingSwitchPreference;
-
 import com.android.internal.logging.nano.MetricsProto;
 import com.unholy.settings.preference.CustomSeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.unholy.settings.preference.SystemSettingSwitchPreference;
 
 public class QSSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -51,7 +48,15 @@ public class QSSettings extends SettingsPreferenceFragment implements
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String QS_PANEL_ALPHA = "qs_panel_alpha";
+    private static final String QS_ROWS_PORTRAIT = "qs_rows_portrait";
+    private static final String QS_ROWS_LANDSCAPE = "qs_rows_landscape";
+    private static final String QS_COLUMNS_PORTRAIT = "qs_columns_portrait";
+    private static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
 
+    private ListPreference mQsRowsPort;
+    private ListPreference mQsRowsLand;
+    private ListPreference mQsColumnsPort;
+    private ListPreference mQsColumnsLand;
     private ListPreference mQuickPulldown; 
     ListPreference mSmartPulldown;
     private CustomSeekBarPreference mQsPanelAlpha;
@@ -82,6 +87,30 @@ public class QSSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
         mQsPanelAlpha.setValue(qsPanelAlpha);
         mQsPanelAlpha.setOnPreferenceChangeListener(this);
+
+        mQsRowsPort = (ListPreference) findPreference(QS_ROWS_PORTRAIT);
+        mQsRowsPort.setOnPreferenceChangeListener(this);
+        int rowsPort = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_ROWS_PORTRAIT, 3, UserHandle.USER_CURRENT);
+        mQsRowsPort.setValue(String.valueOf(rowsPort));
+
+        mQsRowsLand = (ListPreference) findPreference(QS_ROWS_LANDSCAPE);
+        mQsRowsLand.setOnPreferenceChangeListener(this);
+        int rowsLand = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_ROWS_LANDSCAPE, 2, UserHandle.USER_CURRENT);
+        mQsRowsLand.setValue(String.valueOf(rowsLand));
+
+        mQsColumnsPort = (ListPreference) findPreference(QS_COLUMNS_PORTRAIT);
+        mQsColumnsPort.setOnPreferenceChangeListener(this);
+        int colPort = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_COLUMNS_PORTRAIT, 4, UserHandle.USER_CURRENT);
+        mQsColumnsPort.setValue(String.valueOf(colPort));
+
+        mQsColumnsLand = (ListPreference) findPreference(QS_COLUMNS_LANDSCAPE);
+        mQsColumnsLand.setOnPreferenceChangeListener(this);
+        int colLand = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_COLUMNS_LANDSCAPE, 5, UserHandle.USER_CURRENT);
+        mQsColumnsLand.setValue(String.valueOf(colLand));
     }
 
     @Override
@@ -103,6 +132,21 @@ public class QSSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
                     UserHandle.USER_CURRENT);
+        } else if (preference == mQsRowsPort) {
+            int QsRowsPort = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_ROWS_PORTRAIT, QsRowsPort);
+            return true;
+        } else if (preference == mQsRowsLand) {
+            int QsRowsLand = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_ROWS_LANDSCAPE, QsRowsLand);
+            return true;
+        } else if (preference == mQsColumnsPort) {
+            int QsColumnsPort = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_COLUMNS_PORTRAIT, QsColumnsPort);
+            return true;
+        } else if (preference == mQsColumnsLand) {
+            int QsColumnsLand = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_COLUMNS_LANDSCAPE, QsColumnsLand);
             return true;
         }
         return false;

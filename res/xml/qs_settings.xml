@@ -14,54 +14,77 @@
     android:title="@string/qs_settings"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
-        android:key="qs_rows_columns"
-        android:fragment="com.unholy.settings.fragments.QsRowsColumns"
-        android:title="@string/qs_rows_columns_title"/>
+    <ListPreference
+        android:key="quick_pulldown"
+        android:title="@string/quick_pulldown_title"
+        android:entries="@array/quick_pulldown_entries"
+        android:entryValues="@array/quick_pulldown_values"
+        android:persistent="false" />
 
     <ListPreference
-            android:key="quick_pulldown"
-            android:title="@string/quick_pulldown_title"
-            android:entries="@array/quick_pulldown_entries"
-            android:entryValues="@array/quick_pulldown_values"
-            android:persistent="false" />
+        android:key="smart_pulldown"
+        android:title="@string/smart_pulldown_title"
+        android:entries="@array/smart_pulldown_entries"
+        android:entryValues="@array/smart_pulldown_values"
+        android:persistent="false" />
 
-        <ListPreference
-            android:key="smart_pulldown"
-            android:title="@string/smart_pulldown_title"
-            android:entries="@array/smart_pulldown_entries"
-            android:entryValues="@array/smart_pulldown_values"
-            android:persistent="false" />
+    <ListPreference
+        android:key="qs_rows_portrait"
+        android:title="@string/qs_rows_portrait_title"
+        android:entries="@array/qs_rows_portrait_entries"
+        android:entryValues="@array/qs_rows_portrait_values"
+        android:defaultValue="3" />
 
-        <com.unholy.settings.preference.SystemSettingSwitchPreference
-            android:key="qs_tile_title_visibility"
-            android:title="@string/qs_tile_title_visibility_title" 
-            android:defaultValue="true" /> 
+    <ListPreference
+        android:key="qs_rows_landscape"
+        android:title="@string/qs_rows_landscape_title"
+        android:entries="@array/qs_rows_landscape_entries"
+        android:entryValues="@array/qs_rows_landscape_values"
+        android:defaultValue="2" />
 
-        <com.unholy.settings.preference.SecureSettingSwitchPreference 
-            android:key="status_bar_locked_on_secure_keyguard"
-            android:title="@string/block_on_secure_keyguard_title"
-            android:summary="@string/block_on_secure_keyguard_summary"
-            android:defaultValue="false"/>
+    <ListPreference
+        android:key="qs_columns_portrait"
+        android:title="@string/qs_columns_portrait_title"
+        android:entries="@array/qs_columns_portrait_entries"
+        android:entryValues="@array/qs_columns_portrait_values"
+        android:defaultValue="4" />
 
-        <com.unholy.settings.preference.SecureSettingSwitchPreference
-            android:key="quick_settings_vibrate"
-            android:title="@string/quick_settings_vibrate_title"
-            android:summary="@string/quick_settings_vibrate_summary"
-            android:defaultValue="false"/>
+    <ListPreference
+        android:key="qs_columns_landscape"
+        android:title="@string/qs_columns_landscape_title"
+        android:entries="@array/qs_columns_landscape_entries"
+        android:entryValues="@array/qs_columns_landscape_values"
+        android:defaultValue="5" />
 
-        <com.unholy.settings.preference.SystemSettingSwitchPreference
-            android:key="qs_footer_warnings"
-            android:title="@string/qs_footer_warnings_title"
-            android:summary="@string/qs_footer_warnings_summary"
-            android:defaultValue="true" />
+    <com.unholy.settings.preference.SystemSettingSwitchPreference
+        android:key="qs_tile_title_visibility"
+        android:title="@string/qs_tile_title_visibility_title" 
+        android:defaultValue="true" /> 
 
-        <com.unholy.settings.preference.CustomSeekBarPreference
-            android:key="qs_panel_alpha"
-            android:title="@string/qs_panel_alpha_title"
-            android:max="255"
-            settings:min="0"
-            settings:units=""
-            android:persistent="false" />
+    <com.unholy.settings.preference.SecureSettingSwitchPreference
+        android:key="status_bar_locked_on_secure_keyguard"
+        android:title="@string/block_on_secure_keyguard_title"
+        android:summary="@string/block_on_secure_keyguard_summary"
+        android:defaultValue="false"/>
+
+    <com.unholy.settings.preference.SecureSettingSwitchPreference
+        android:key="quick_settings_vibrate"
+        android:title="@string/quick_settings_vibrate_title"
+        android:summary="@string/quick_settings_vibrate_summary"
+        android:defaultValue="false"/>
+
+    <com.unholy.settings.preference.SystemSettingSwitchPreference
+        android:key="qs_footer_warnings"
+        android:title="@string/qs_footer_warnings_title"
+        android:summary="@string/qs_footer_warnings_summary"
+        android:defaultValue="true" />
+
+    <com.unholy.settings.preference.CustomSeekBarPreference
+        android:key="qs_panel_alpha"
+        android:title="@string/qs_panel_alpha_title"
+        android:max="255"
+        settings:min="0"
+        settings:units=""
+        android:persistent="false" />
 
 </PreferenceScreen>
