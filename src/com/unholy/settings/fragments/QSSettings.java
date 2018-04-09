@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Unholy Developers
+ * Copyright (C) 2018 Unholy Developers
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,6 +132,7 @@ public class QSSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
                     UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mQsRowsPort) {
             int QsRowsPort = Integer.valueOf((String) newValue);
             Settings.System.putInt(resolver, Settings.System.QS_ROWS_PORTRAIT, QsRowsPort);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 UnholyDevs
+ * Copyright (C) 2018 Unholy Developers
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ import com.unholy.settings.preference.SystemSettingSwitchPreference;
 import java.util.Date;
 
 public class StatusbarSettings extends SettingsPreferenceFragment implements
-	Preference.OnPreferenceChangeListener  {
+    Preference.OnPreferenceChangeListener {
 
     private static final String SYSTEMUI_THEME_STYLE = "systemui_theme_style";
     
@@ -100,7 +100,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         mSystemUIThemeStyle.setSummary(mSystemUIThemeStyle.getEntry());
         mSystemUIThemeStyle.setOnPreferenceChangeListener(this);
         
-	    mStatusBarClockShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK);
+        mStatusBarClockShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK);
         mStatusBarSecondsShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);

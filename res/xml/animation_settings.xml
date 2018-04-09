@@ -18,7 +18,7 @@
         android:key="system_default_animation"
         android:title="@string/system_default_animation_title"
         android:summary="@string/system_default_animation_summary"
-        android:defaultValue="false" />    
+        android:defaultValue="false" />
 
     <ListPreference
         android:key="listview_animation"
