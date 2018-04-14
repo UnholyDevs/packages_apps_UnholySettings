@@ -205,13 +205,7 @@
 
     <!-- System default animation -->
     <string name="system_default_animation_title">Android P animation style</string>
-    <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>
-  
-    <!-- SystemUI Theme Style -->
-    <string name="systemui_theme_style_title">SystemUI style</string>
-    <string name="systemui_theme_style_auto">Automatic using wallpaper</string>
-    <string name="systemui_theme_style_light">Light style</string>
-    <string name="systemui_theme_style_dark">Dark style</string>
+    <string name="system_default_animation_summary">Enable Android P \"Default\" animations</string>    
 
     <!-- Volume key controls media stream -->
     <string name="volume_keys_control_media_stream_title">Volume keys control media volume</string>
