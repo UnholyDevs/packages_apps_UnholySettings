@@ -24,12 +24,12 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class MiscellaneousSettings extends SettingsPreferenceFragment {
+public class GestureSettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.miscellaneous_settings);
+        addPreferencesFromResource(R.xml.gesture_settings);
         final PreferenceScreen prefScreen = getPreferenceScreen();
     }
 

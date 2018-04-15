@@ -16,9 +16,9 @@
 
     <!-- Settings Categories -->
     <string name="animation_settings">Animation settings</string>
+    <string name="gesture_settings">Gesture settings</string>
     <string name="hardware_settings">Hardware settings</string>
     <string name="lockscreen_settings">Lockscreen settings</string>
-    <string name="miscellaneous_settings">Miscellaneous settings</string>
     <string name="recents_settings">Recents settings</string>
     <string name="navbar_settings">Navbar settings</string>
     <string name="powermenu_settings">Power menu settings</string>

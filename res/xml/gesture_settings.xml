@@ -11,7 +11,7 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/miscellaneous_settings"
+    android:title="@string/gesture_settings"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <com.unholy.settings.preference.SystemSettingSwitchPreference
