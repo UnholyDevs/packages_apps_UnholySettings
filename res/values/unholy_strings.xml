@@ -38,7 +38,7 @@
     <string name="hide_lockscreen_alarm_summary">Change the alarm text\'s visibility underneath the clock widget</string>
 
     <!-- Lockscreen Media art -->
-    <string name="media_art_title">Full-screen media cover art</string>
+    <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Set full-screen media cover art on the lockscreen</string>
 
     <!-- QuickSettings haptic feedback -->
@@ -242,6 +242,6 @@
     <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
 
     <!-- Lockscreen charging  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
+    <string name="lockscreen_battery_info_title">Charging info</string>
     <string name="lockscreen_battery_info_summary">Display charger max current and voltage and battery temperature on lockscreen while charging</string>
 </resources>
