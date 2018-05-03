@@ -42,7 +42,7 @@
         android:key="fingerprint_success_vib"
         android:title="@string/fprint_sucess_vib_title"
         android:summary="@string/fprint_sucess_vib_summary"
-        android:persistent="false" />
+        android:persistent="true" />
 
     <com.unholy.settings.preference.SystemSettingSwitchPreference
         android:key="lockscreen_media_metadata"
