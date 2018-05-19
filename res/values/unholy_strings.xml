@@ -248,4 +248,17 @@
     <!-- Wake options -->
     <string name="wakeup_when_plugged_unplugged_title">Wake on charge</string>
     <string name="wakeup_when_plugged_unplugged_summary">Wake device if charger is plugged/unplugged.</string>
+
+    <!-- Lockscreen Clock & Date Settings -->
+    <string name="lockscreen_clock_selection_title">Clock style</string>
+    <string name="lockscreen_clock_selection_digital">Default</string>
+    <string name="lockscreen_clock_selection_digital_bold">Digital (bold)</string>
+    <string name="lockscreen_clock_selection_analog">Analog</string>
+    <string name="lockscreen_clock_selection_analog_deadpool">Analog (deadpool)</string>
+    <string name="lockscreen_clock_selection_sammy">Sammy</string>
+    <string name="lockscreen_clock_selection_sammy_bold">Sammy (bold)</string>
+    <string name="lockscreen_date_selection_title">Date style</string>
+    <string name="lockscreen_date_selection_default">Default</string>
+    <string name="lockscreen_date_selection_str_box">Semi-transparent box</string>
+    <string name="lockscreen_date_selection_str_round">Semi-transparent box (round)</string>
 </resources>
